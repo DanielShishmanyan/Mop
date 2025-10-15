@@ -1,24 +1,19 @@
 import streamlit as st
-import numpy as np
-from scipy import stats
+import matplotlib.pyplot as plt
+import random
 
+# Генериране на 20 случайни възрасти между 1 и 69
+ages = [random.randint(1, 69) for _ in range(20)]
 
-# Данни
-data1 = [4, 1, 7]
-data2 = [4, 2, 4, 3, 2, 2]
+st.write("Възрасти на 20 човека:", ages)
 
+# Създаване на хистограма
+plt.figure(figsize=(12, 6))
+plt.hist(ages, bins=range(1, 71), color='skyblue', edgecolor='black')
+plt.xlabel('Възраст')
+plt.ylabel('Брой хора')
+plt.title('Хистограма на възрастта на 20 случайни човека')
+plt.xticks(range(0, 71, 5))
+plt.grid(axis='y', alpha=0.75)
 
-# Средна стойност
-mean_val = np.mean(data1)
-st.write("Средна стойност на", data1, "е", mean_val)
-
-
-# Медиана
-median_val = np.median(data1)
-st.write("Медиана на", data1, "е", median_val)
-
-
-# Мода
-
-mode_val = stats.mode(data2, keepdims=True).mode[0]
-st.write("Мода на", data2, "е", mode_val)
+st.pyplot(plt)
