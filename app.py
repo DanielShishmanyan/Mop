@@ -19,5 +19,6 @@ st.write("Медиана на", data1, "е", median_val)
 
 
 # Мода
-mode_val = stats.mode(data2).mode[0]
+
+mode_val = stats.mode(data2, keepdims=True).mode[0]
 st.write("Мода на", data2, "е", mode_val)
